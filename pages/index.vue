@@ -2,7 +2,9 @@
   <div class="m-8">
     <TheHeader />
 
-    <h1 class="font-bold text-4xl">Blog Posts</h1>
+    <h1 class="font-bold text-4xl">
+      Blog Posts
+    </h1>
     <ul class="flex flex-wrap">
       <li
         v-for="article of articles"
@@ -17,12 +19,14 @@
             v-if="article.img"
             class="h-48 xxlmin:w-1/2 xxlmax:w-full object-cover"
             :src="article.img"
-          />
+          >
 
           <div
             class="p-6 flex flex-col justify-between xxlmin:w-1/2 xxlmax:w-full"
           >
-            <h2 class="font-bold">{{ article.title }}</h2>
+            <h2 class="font-bold">
+              {{ article.title }}
+            </h2>
             <p>by {{ article.author.name }}</p>
             <p class="font-bold text-gray-600 text-sm">
               {{ article.description }}
@@ -31,7 +35,9 @@
         </NuxtLink>
       </li>
     </ul>
-    <h3 class="mb-4 font-bold text-2xl uppercase text-center">Topics</h3>
+    <h3 class="mb-4 font-bold text-2xl uppercase text-center">
+      Topics
+    </h3>
     <ul class="flex flex-wrap mb-4 text-center">
       <li
         v-for="tag of tags"
@@ -53,14 +59,12 @@
         <a
           href="https://twitter.com/debs_obrien"
           class="font-bold hover:underline"
-          >Debbie O'Brien</a
-        >
+        >Debbie O'Brien</a>
         at NuxtJS. See the
         <a
           href="https://nuxtjs.org/blog/creating-blog-with-nuxt-content"
           class="font-bold hover:underline"
-          >tutorial</a
-        >
+        >tutorial</a>
         for how to build it.
       </p>
     </footer>
@@ -69,7 +73,7 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData ({ $content, params }) {
     const articles = await $content('articles', params.slug)
       .only(['title', 'description', 'img', 'slug', 'author'])
       .sortBy('createdAt', 'desc')
